@@ -19,8 +19,8 @@
 set -e
 
 # Required!
-DEVICE=oneplus3
-VENDOR=oneplus
+DEVICE=x2
+VENDOR=leeco
 
 INITIAL_COPYRIGHT_YEAR=2016
 

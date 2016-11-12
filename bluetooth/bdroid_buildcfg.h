@@ -22,29 +22,7 @@
 
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
-
-#include <cutils/properties.h>
-
-static inline const char* BtmGetDefaultName()
-{
-    int32_t rf_version = property_get_int32("ro.boot.rf_version", 0);
-
-    switch (rf_version) {
-    case 11:
-    case 21:
-    case 31:
-        return "OnePlus 3";
-    case 12:
-    case 22:
-    case 32:
-        return "OnePlus 3T";
-    }
-
-    return "";
-}
-
-#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
-#define BLUETOOTH_QTI_SW TRUE
+#define BTM_DEF_LOCAL_NAME   "LeEco Le Max 2"
 // Disables read remote device feature
 #define MAX_ACL_CONNECTIONS   16
 #define MAX_L2CAP_CHANNELS    16

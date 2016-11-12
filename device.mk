@@ -21,7 +21,7 @@
 # definition file).
 #
 
-$(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
+$(call inherit-product-if-exists, vendor/leeco/x2/x2-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -243,7 +243,7 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    OneplusDoze
+    LeEcoDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -253,8 +253,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    OneplusPocketMode \
-    android.hardware.biometrics.fingerprint@2.1-service
+    fingerprintd \
+    LeEcoPocketMode
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
