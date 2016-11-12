@@ -344,6 +344,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.class_main.sh \
     init.qcom.power.rc \
+    qfp_boot.sh \
     init.qcom.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \

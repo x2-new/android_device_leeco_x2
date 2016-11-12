@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
+=======
+# Copyright (c) 2013-2015, The Linux Foundation. All rights reserved.
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -27,14 +31,18 @@
 #
 #
 
+<<<<<<< HEAD
 import /vendor/etc/init/hw/init.qcom.power.rc
 
+=======
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 on early-init
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
     symlink /data/tombstones /tombstones
     mkdir /dsp 0771 media media
 
+<<<<<<< HEAD
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -54,6 +62,14 @@ on fs
 on init
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
     export LD_SHIM_LIBS /system/vendor/lib/hw/camera.msm8996.so|libcamera_shim.so:/system/lib/libcamera_client.so|libcamera_parameters_shim.so
+=======
+on post-fs
+    export LD_PRELOAD libNimsWrap.so
+
+on fs
+    wait /dev/block/bootdevice
+    mount_all fstab.qcom
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -63,6 +79,7 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
+<<<<<<< HEAD
     mkdir /persist/qti_fp 0700 system system
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/misc/seemp 0700 system system
@@ -83,17 +100,34 @@ on post-fs-data
 #Create folder for mm-qcamera-daemon
 mkdir /data/vendor/camera 0770 camera camera
 
+=======
+    mkdir /persist/data/qc_senseid 0700 system system
+    mkdir /persist/qc_senseid 0700 system system
+    mkdir /data/misc/dts 0770 media audio
+    mkdir /data/usf 0700 system system
+    mkdir /data/misc/tloc/ 0700 system drmrpc
+    mkdir /data/misc/qvop 0660 system system
+    mkdir /data/misc/audio_pp 0771 media audio
+    mkdir /persist/bms 0700 root system
+    restorecon_recursive /persist
+    
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 on property:init.svc.bootanim=running
     write /sys/class/leds/wled/brightness 4095
 
 on boot
     start rmt_storage
     start rfs_access
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 # access permission for secure touch
     chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch_enable
     chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch
     chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch_enable
     chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch
+<<<<<<< HEAD
     write /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/input/input0/update_fw 1
 
     # Update touchscreen and keypad firmware
@@ -211,22 +245,115 @@ on boot
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+=======
+    write /proc/sys/kernel/sched_boost 1
+    write /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/input/input0/update_fw 1
+
+    chown system /sys/devices/soc/75ba000.i2c/i2c-12/12-004b/input/input2/wake_gesture
+    chmod 0666 /sys/devices/soc/75ba000.i2c/i2c-12/12-004b/input/input2/wake_gesture
+
+    #Chown led nodes as needed from UI running on system server
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/torch-light1/brightness
+
+    # LEDS
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/red/start_idx
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/green/duty_pcts
+    chown system system /sys/class/leds/green/pause_lo
+    chown system system /sys/class/leds/green/pause_hi
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/green/start_idx
+    chown system system /sys/class/leds/blue/brightness
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/blue/pause_lo
+    chown system system /sys/class/leds/blue/pause_hi
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/blue/start_idx
+    chown system system /sys/class/leds/rgb/rgb_blink
+    chmod 0660 /sys/class/leds/red/brightness
+    chmod 0660 /sys/class/leds/red/duty_pcts
+    chmod 0660 /sys/class/leds/red/pause_lo
+    chmod 0660 /sys/class/leds/red/pause_hi
+    chmod 0660 /sys/class/leds/red/ramp_step_ms
+    chmod 0660 /sys/class/leds/red/start_idx
+    chmod 0660 /sys/class/leds/green/brightness
+    chmod 0660 /sys/class/leds/green/duty_pcts
+    chmod 0660 /sys/class/leds/green/pause_lo
+    chmod 0660 /sys/class/leds/green/pause_hi
+    chmod 0660 /sys/class/leds/green/ramp_step_ms
+    chmod 0660 /sys/class/leds/green/start_idx
+    chmod 0660 /sys/class/leds/blue/brightness
+    chmod 0660 /sys/class/leds/blue/duty_pcts
+    chmod 0660 /sys/class/leds/blue/pause_lo
+    chmod 0660 /sys/class/leds/blue/pause_hi
+    chmod 0660 /sys/class/leds/blue/ramp_step_ms
+    chmod 0660 /sys/class/leds/blue/start_idx
+    chmod 0660 /sys/class/leds/rgb/rgb_blink
+
+    # Graphics node permissions
+    chown system graphics /sys/class/graphics/fb0/dyn_pu
+    chown system graphics /sys/class/graphics/fb0/idle_time
+    chown system graphics /sys/class/graphics/fb0/mode
+    chown system graphics /sys/class/graphics/fb0/modes
+    chmod 0664 /sys/class/graphics/fb0/dyn_pu
+    chmod 0664 /sys/class/graphics/fb0/idle_time
+    chmod 0664 /sys/class/graphics/fb0/mode
+    chmod 0664 /sys/class/graphics/fb0/modes
+
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 0666 /sys/class/leds/led:torch_0/brightness
+    chmod 0666 /sys/class/leds/led:torch_1/brightness
+
+    # Chown for backlight
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/lcd-backlight/max_brightness
+    chown system system /sys/class/leds/wled/brightness
+
+    chmod 0666 /sys/class/leds/lcd-backlight/brightness
+    chmod 0666 /sys/class/leds/lcd-backlight/max_brightness
+
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
 
 #fingerprint service
+<<<<<<< HEAD
 service fingerprintd /system/vendor/bin/fingerprintd
+=======
+service fingerprintd /system/bin/fingerprintd
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class late_start
     user system
     group system
 
+<<<<<<< HEAD
 service qfp-daemon /system/vendor/bin/qfp-daemon
+=======
+service qfp-boot /system/bin/sh /system/etc/qfp_boot.sh
+    class late_start
+    user root
+    group root
+    oneshot
+
+service qfp-daemon /system/bin/qfp-daemon
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class late_start
     user system
     group system drmrpc diag input
 
+<<<<<<< HEAD
 #service fps_hal /system/vendor/bin/fingerprint.qcom
 #    class late_start
 #    user system
@@ -252,6 +379,25 @@ service per_proxy /vendor/bin/pm-proxy
     group system
     disabled
     writepid /dev/cpuset/system-background/tasks
+=======
+service qvop-daemon /system/bin/qvop-daemon
+    class late_start
+    user system
+    group system drmrpc
+
+#Start up peripheral manager
+service per_mgr /system/bin/pm-service
+    class late_start
+    user system
+    group system net_raw
+    ioprio rt 4
+
+service per_proxy /system/bin/pm-proxy
+    class late_start
+    user system
+    group system
+    disabled
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 
 on property:init.svc.per_mgr=running
     start per_proxy
@@ -259,6 +405,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
+<<<<<<< HEAD
 service mdm_launcher /system/bin/sh init.mdm.sh
      class core
      oneshot
@@ -309,10 +456,33 @@ service seempd /system/vendor/bin/seempd
    socket seempdw dgram 0666 system system
 
 service secotad /system/vendor/bin/secotad
+=======
+
+service qseecomd /system/bin/qseecomd
+   class core
+   user root
+   group root
+
+service perfd /system/vendor/bin/perfd
+   class main
+   user root
+   socket perfd seqpacket 0666 root system
+   disabled
+   writepid /dev/cpuset/system-background/tasks
+
+#service seempd /system/bin/seempd
+#   class late_start
+#   user system
+#   group system
+#   socket seempdw dgram 0666 system system
+
+service secotad /system/bin/secotad
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
    class late_start
    user system
    group system
 
+<<<<<<< HEAD
 #service mpdecision /system/vendor/bin/mpdecision --avg_comp
 #   user root
 #   disabled
@@ -323,11 +493,15 @@ service secotad /system/vendor/bin/secotad
 #   disabled
 #
 service thermal-engine /system/vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine.conf}
+=======
+service thermal-engine /system/vendor/bin/thermal-engine
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
    class main
    user root
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
+<<<<<<< HEAD
    socket thermal-send-rule stream 0660 system system
    group root
    socket thermal-send-client stream 0666 system system
@@ -344,20 +518,34 @@ service thermal-engine /system/vendor/bin/thermal-engine -c ${sys.qcom.thermalcf
 #    oneshot
 #
 service time_daemon /system/vendor/bin/time_daemon
+=======
+   group root
+
+service time_daemon /system/bin/time_daemon
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
    class late_start
    user root
    group root
 
+<<<<<<< HEAD
 service adsprpcd /system/vendor/bin/adsprpcd
+=======
+service adsprpcd /system/bin/adsprpcd
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
    class main
    user media
    group media
 
+<<<<<<< HEAD
 service audiod /system/vendor/bin/audiod
+=======
+service audiod /system/bin/audiod
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
    class late_start
    user system
    group system
 
+<<<<<<< HEAD
 
 service usf_tester /system/vendor/bin/usf_tester
     user system
@@ -436,6 +624,20 @@ service imsdatadaemon /system/vendor/bin/imsdatadaemon
     group system wifi radio inet log diag
     disabled
     writepid /dev/cpuset/system-background/tasks
+=======
+service imsqmidaemon /system/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio net_raw log diag
+
+service imsdatadaemon /system/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet net_raw log diag net_admin
+    disabled
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 
 service pd_mapper /system/vendor/bin/pd-mapper
      class core
@@ -448,6 +650,7 @@ on property:persist.sys.pd_enable=1
 on property:persist.sys.pd_enable=0
      write /sys/class/service_locator/service_locator_status 0
 
+<<<<<<< HEAD
 #
 ## QCA1530 SoC late_start group trigger
 #service gnss-init /system/vendor/bin/gnss.qca1530.sh init
@@ -475,12 +678,39 @@ on property:vendor.ims.DATA_DAEMON_STATUS=1
    start vendor.imsrcsservice
 
 service dts_configurator /system/vendor/bin/dts_configurator
+=======
+on property:sys.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
+
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
+   class main
+   user system
+   socket ims_rtpd stream 0660 system radio
+   group radio net_raw diag inet log
+   disabled
+
+service imscmservice /system/bin/imscmservice
+   class main
+   user system
+   group radio net_raw diag diag log
+   disabled
+
+on property:sys.ims.DATA_DAEMON_STATUS=1
+   start ims_rtp_daemon
+   start imscmservice
+
+service dts_configurator /system/bin/dts_configurator
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class late_start
     user system
     group system media audio
     oneshot
 
+<<<<<<< HEAD
 service dtseagleservice /system/vendor/bin/dts_eagle_service
+=======
+service dtseagleservice /system/bin/dts_eagle_service
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class late_start
     user system
     group audio media
@@ -489,6 +719,16 @@ service dtseagleservice /system/vendor/bin/dts_eagle_service
 on property:init.svc.dts_configurator=stopped
     start dtseagleservice
 
+<<<<<<< HEAD
+=======
+service ppd /system/vendor/bin/mm-pp-dpps
+    class late_start
+    user system
+    group system graphics
+    socket pps stream 0660 system system
+    disabled
+
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
@@ -512,16 +752,27 @@ service tlocd /system/bin/tloc_daemon
     user system
     group drmrpc gps net_raw
 
+<<<<<<< HEAD
 service energy-awareness /system/vendor/bin/energy-awareness
+=======
+service energy-awareness /system/bin/energy-awareness
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
     class main
     user root
     group system
     oneshot
 
+<<<<<<< HEAD
 service hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
+=======
+service hvdcp_opti /system/bin/hvdcp_opti
+    class main
+    user root
+    group root
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
 
 service mdtpd /system/vendor/bin/mdtpd
    class late_start
@@ -532,6 +783,7 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
+<<<<<<< HEAD
     wait /dev/block/bootdevice/by-name/system
     mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
     start hvdcp_opti
@@ -594,3 +846,45 @@ on property:sys.rainbow.recovery=1
 
 on property:sys.rainbow.recovery=0
     write /sys/class/leds/rgb/rgb_blink 0
+=======
+    wait /dev/block/bootdevice
+    mount_all charger.fstab.qcom
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    start hvdcp_opti
+    setprop persist.sys.usb.config charging
+    setprop ro.board.platform msm8996
+    class_start charger
+    class_stop main
+    class_stop late_start
+    start qcom-post-boot
+    start thermal-engine
+
+service sw_coredump /system/bin/sw_coredump
+   class main
+   user root
+   group root
+
+# factory test running
+on property:sys.factory.test=running
+   chown system system /sys/devices/soc/soc:qcom,camera-flash/flashled1
+   chown system system /sys/devices/soc/soc:qcom,camera-flash/flashled2
+   setenforce 0
+
+# factory test stoped
+on property:sys.factory.test=stoped
+   chown root root /sys/devices/soc/soc:qcom,camera-flash/flashled1
+   chown root root /sys/devices/soc/soc:qcom,camera-flash/flashled2
+   setenforce 1
+
+#set nvm_service
+service nvm_service /system/bin/nvm_service
+    class core
+    disabled
+    oneshot
+    user root
+    group root
+
+on property:sys.boot_completed=1
+    start nvm_service
+>>>>>>> 80a345f... Add qfp_boot and init.target.rc files from stock
