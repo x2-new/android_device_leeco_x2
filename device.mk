@@ -253,8 +253,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprintd \
-    LeEcoPocketMode
+    fingerprintd
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
