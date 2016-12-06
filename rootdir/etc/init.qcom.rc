@@ -967,6 +967,7 @@ service qvop-daemon /vendor/bin/qvop-daemon
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
     user root
+    seclabel u:r:bluetooth_loader:s0
     oneshot
 
 service atfwd /system/bin/ATFWD-daemon
@@ -987,8 +988,9 @@ service hostapd_fst /vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global 
 
 service vendor.wigig_hostapd /vendor/bin/hostapd -dd /data/vendor/wifi/wigig_hostapd.conf
     class late_start
-    user wifi
-    group wifi inet keystore net_admin net_raw
+    group radio wifi inet
+    disabled
+    seclabel u:r:bluetooth_loader:s0
     oneshot
     disabled
 
