@@ -36,6 +36,8 @@ on early-init
     chmod 0620 /dev/kmsg
 
 on init
+    # export LD_SHIM_LIBS /system/lib/hw/camera.msm8996.so|libcamera_shim.so
+
     # Set permissions for persist partition
     mkdir /persist 0771 root system
 
@@ -1017,14 +1019,14 @@ service_redefine ril-daemon /system/bin/rild
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log wakelock
+    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log net_raw
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log wakelock
+    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log net_raw
 
 service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
     class late_start
@@ -1218,15 +1220,15 @@ service seemp_healthd /vendor/bin/seemp_healthd
     group system
     writepid /dev/cpuset/system-background/tasks
 
-service yep_qmi_server /system/bin/yep_qmi_server
-    class core
-    user root
-    #seclabel u:r:yep_qmi_server:s0
+#service yep_qmi_server /system/bin/yep_qmi_server
+#    class core
+#    user root
+#    #seclabel u:r:yep_qmi_server:s0
 
-service yep_diag /system/bin/yepdiag
-    class core
-    user root
-    #seclabel u:r:yepdiag:s0
+#service yep_diag /system/bin/yepdiag
+#    class core
+#    user root
+#    #seclabel u:r:yepdiag:s0
 
 # letv
 on property:init.svc.qmuxd=running
