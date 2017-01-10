@@ -190,7 +190,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PACKAGES += \
     Snap \
-    libcamera_shim \
     libstlport
 
 # Connectivity Engine support (CNE)
