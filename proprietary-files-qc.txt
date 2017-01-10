@@ -28,6 +28,12 @@ vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/rfsa/adsp/libvpp_frc.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
+vendor/lib/rfsa/adsp/libobjectMattingApp_skel.so
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveCleverCapture_skel.so
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/rfsa/adsp/libscveTextReco_skel.so
 vendor/lib/rfsa/adsp/us-syncproximity.so
 
 # Audio
@@ -177,28 +183,11 @@ vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libSecureUILib.so
 vendor/lib64/libssd.so
-vendor/lib64/libStDrvInt.so
-vendor/lib64/libtzdrmgenprov.so
-
-# DRM - HDCP
-vendor/bin/hdcp1prov
-vendor/bin/hdcp2p2prov
-vendor/lib/libhdcp1prov.so
-vendor/lib/libhdcp2p2prov.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib64/libhdcp1prov.so
-vendor/lib64/libhdcp2p2prov.so
-vendor/lib64/libmm-hdcpmgr.so
-
-# DRM - Qualcomm Trusted Execution Enviornment
-lib/vendor.qti.hardware.qteeconnector@1.0.so
-lib64/vendor.qti.hardware.qteeconnector@1.0.so
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so
+vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
+vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8996.so
@@ -529,9 +518,10 @@ vendor/lib64/libtime_genoff.so
 vendor/lib64/libTimeService.so
 
 # Widevine
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvdrm_L1.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/liboemcrypto.so
 
 # Wifi
 bin/cnss-daemon:vendor/bin/cnss-daemon
