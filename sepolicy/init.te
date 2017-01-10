@@ -5,3 +5,4 @@ allow init proc_touchpanel:file write;
 
 allow init sysfs:dir { write };
 allow init sysfs:file { read write };
+allow init init:socket { create bind read write };
