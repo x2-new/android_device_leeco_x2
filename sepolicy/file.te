@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 type fpc_data_file, file_type;
 type fpc_images_file, file_type;
 type sysfs_fpc_irq, sysfs_type, fs_type;
@@ -7,3 +8,8 @@ type nv_data_file, file_type;
 type proc_stat, fs_type;
 type debugfs_msm_core, debugfs_type, fs_type;
 type debugfs_rmts, debugfs_type, fs_type;
+=======
+# For qfp-daemon
+type persist_qc_senseid_file, file_type;
+
+>>>>>>> 47291e7... x2: Add sepolicy for fingerprintd to access calibration data
