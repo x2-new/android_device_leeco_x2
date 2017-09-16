@@ -64,6 +64,14 @@ PRODUCT_PACKAGES += \
     netmgr_config.xml \
     qmi_config.xml \
 
+# OTA
+PRODUCT_PACKAGES += \
+    OTAUpdates
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ota.version=$(shell date +%Y%m%d) \
+    ro.ota.romname=AOSiP_x2-Juan \
+    ro.ota.manifest=https://rawgit.com/AOSiP-zl1x2/OTA/master/x2/ota.xml
 
 # Sensors
 PRODUCT_COPY_FILES += \
