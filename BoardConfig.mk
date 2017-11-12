@@ -212,8 +212,8 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_op3
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
-# CM Hardware
-BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
