@@ -1,8 +1,5 @@
 get_prop(dpmd, diag_prop);
-<<<<<<< HEAD
-=======
 
 # allow dpmd self:capability { sys_ptrace };
 
 dontaudit dpmd self:capability sys_ptrace;
->>>>>>> ce00d79... x2: Remove monotonic property

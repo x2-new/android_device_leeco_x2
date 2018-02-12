@@ -1,2 +1,5 @@
-allow cnd diag_prop:property_service set;
-get_prop(cnd, diag_prop);
+allow cnd self:capability { dac_override chown fsetid net_raw };
+
+set_prop(cnd, debug_prop)
+
+allow cnd system_wpa_socket:sock_file unlink;

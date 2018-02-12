@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.    -->
-<!--                                                                        -->
-<!-- Redistribution and use in source and binary forms, with or without     -->
-<!-- modification, are permitted provided that the following conditions are -->
-<!-- met:                                                                   -->
-<!--     * Redistributions of source code must retain the above copyright   -->
-<!--       notice, this list of conditions and the following disclaimer.    -->
-<!--     * Redistributions in binary form must reproduce the above          -->
-<!--       copyright notice, this list of conditions and the following      -->
-<!--       disclaimer in the documentation and/or other materials provided  -->
-<!--       with the distribution.                                           -->
-<!--     * Neither the name of The Linux Foundation nor the names of its    -->
-<!--       contributors may be used to endorse or promote products derived  -->
-<!--       from this software without specific prior written permission.    -->
-<!--                                                                        -->
-<!-- THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED           -->
-<!-- WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF   -->
-<!-- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT -->
-<!-- ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS -->
-<!-- BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR -->
-<!-- CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF   -->
-<!-- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR        -->
-<!-- BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,  -->
-<!-- OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN -->
-<!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
 <mixer>
     <!-- These are the initial mixer settings -->
     <ctl name="Voice Rx Device Mute" id="0" value="0" />
@@ -119,7 +94,6 @@
     <ctl name="HDMI Mixer MultiMedia4" value="0" />
     <ctl name="HDMI Mixer MultiMedia5" value="0" />
     <ctl name="HDMI Mixer MultiMedia7" value="0" />
-    <ctl name="HDMI Mixer MultiMedia9" value="0" />
     <ctl name="HDMI Mixer MultiMedia10" value="0" />
     <ctl name="HDMI Mixer MultiMedia11" value="0" />
     <ctl name="HDMI Mixer MultiMedia12" value="0" />
@@ -254,8 +228,6 @@
     <ctl name="SPL SRC3 MUX" value="ZERO" />
     <ctl name="RX INT1 SPLINE MIX HPHL Switch" value="0" />
     <ctl name="RX INT3 SPLINE MIX LO1 Switch" value="0" />
-    <ctl name="RX INT1 SPLINE MIX HPHL Native Switch" value="0" />
-    <ctl name="RX INT2 SPLINE MIX HPHR Native Switch" value="0" />
     <ctl name="RX INT2 SPLINE MIX HPHR Switch" value="0" />
     <ctl name="RX INT4 SPLINE MIX LO2 Switch" value="0" />
     <ctl name="RX INT5 SPLINE MIX LO3 Switch" value="0" />
@@ -530,14 +502,22 @@
     <ctl name="MultiMedia8 Mixer AFE_PCM_TX" value="0" />
     <!-- audio record compress end-->
     <!-- listen -->
-    <ctl name="LSM1 MUX" value="None" />
-    <ctl name="LSM2 MUX" value="None" />
-    <ctl name="LSM3 MUX" value="None" />
-    <ctl name="LSM4 MUX" value="None" />
-    <ctl name="LSM5 MUX" value="None" />
-    <ctl name="LSM6 MUX" value="None" />
-    <ctl name="LSM7 MUX" value="None" />
-    <ctl name="LSM8 MUX" value="None" />
+    <ctl name="LSM1 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM2 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM3 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM4 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM5 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM6 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM7 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM8 Mixer SLIMBUS_5_TX" value="0" />
+    <ctl name="LSM1 Port" value="None" />
+    <ctl name="LSM2 Port" value="None" />
+    <ctl name="LSM3 Port" value="None" />
+    <ctl name="LSM4 Port" value="None" />
+    <ctl name="LSM5 Port" value="None" />
+    <ctl name="LSM6 Port" value="None" />
+    <ctl name="LSM7 Port" value="None" />
+    <ctl name="LSM8 Port" value="None" />
     <ctl name="SLIMBUS_5_TX LSM Function" value="None" />
     <!-- listen end-->
 
@@ -595,9 +575,6 @@
         <path name="deep-buffer-playback" />
     </path>
 
-    <path name="deep-buffer-playback speaker-protected">
-        <path name="deep-buffer-playback" />
-    </path>
     <path name="deep-buffer-playback hdmi">
         <ctl name="HDMI Mixer MultiMedia1" value="1" />
     </path>
@@ -713,11 +690,7 @@
     </path>
 
     <path name="audio-ull-playback">
-        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia8" value="1" />
-    </path>
-
-    <path name="audio-ull-playback speaker-protected">
-        <path name="audio-ull-playback" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
     </path>
 
     <path name="audio-ull-playback smartpa">
@@ -733,7 +706,7 @@
     </path>
 
     <path name="audio-ull-playback speaker-and-headphones">
-        <path name="audio-ull-playback quat_i2s" />
+        <path name="audio-ull-playback" />
         <path name="audio-ull-playback headphones" />
     </path>
 
@@ -743,11 +716,11 @@
     </path>
 
     <path name="audio-ull-playback hdmi">
-        <ctl name="HDMI Mixer MultiMedia8" value="1" />
+        <ctl name="HDMI Mixer MultiMedia3" value="1" />
     </path>
 
     <path name="audio-ull-playback bt-sco">
-        <ctl name="AUX_PCM_RX Audio Mixer MultiMedia8" value="1" />
+        <ctl name="AUX_PCM_RX Audio Mixer MultiMedia3" value="1" />
     </path>
 
     <path name="audio-ull-playback bt-sco-wb">
@@ -766,7 +739,7 @@
     </path>
 
     <path name="audio-ull-playback afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia8" value="1" />
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
     </path>
 
     <path name="multi-channel-playback hdmi">
@@ -791,10 +764,6 @@
 
     <path name="compress-offload-playback hdmi">
         <ctl name="HDMI Mixer MultiMedia4" value="1" />
-    </path>
-
-    <path name="silence-playback hdmi">
-        <ctl name="HDMI Mixer MultiMedia9" value="1" />
     </path>
 
     <path name="compress-offload-playback bt-sco">
@@ -1353,7 +1322,7 @@
     </path>
 
     <path name="low-latency-record">
-      <ctl name="MultiMedia8 Mixer SLIM_0_TX" value="1" />
+      <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="1" />
     </path>
 
     <path name="low-latency-record bt-sco">
@@ -1366,7 +1335,7 @@
     </path>
 
     <path name="low-latency-record usb-headset-mic">
-        <ctl name="MultiMedia8 Mixer AFE_PCM_TX" value="1" />
+        <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="1" />
     </path>
 
     <path name="low-latency-record capture-fm">
@@ -1597,12 +1566,12 @@
         <ctl name="AUX_PCM_RX Audio Mixer MultiMedia6" value="1" />
         <ctl name="MultiMedia6 Mixer SLIM_0_TX" value="1" />
         <ctl name="SLIMBUS_DL_HL Switch" value="1" />
-    </path>
+   </path>
 
    <path name="hfp-sco-wb">
         <ctl name="AUX PCM SampleRate" value="16000" />
         <path name="hfp-sco" />
-    </path>
+   </path>
 
     <path name="volte-call">
         <ctl name="SLIM_0_RX_Voice Mixer VoLTE" value="1" />
@@ -1678,6 +1647,11 @@
 
     <path name="vowlan-call">
         <ctl name="SLIM_0_RX_Voice Mixer VoWLAN" value="1" />
+        <ctl name="VoWLAN_Tx Mixer SLIM_0_TX_VoWLAN" value="1" />
+    </path>
+
+    <path name="vowlan-call smartpa">
+        <ctl name="TERT_MI2S_RX_Voice Mixer VoWLAN" value="1" />
         <ctl name="VoWLAN_Tx Mixer SLIM_0_TX_VoWLAN" value="1" />
     </path>
 
@@ -1782,36 +1756,45 @@
     </path>
 
     <path name="listen-voice-wakeup-1">
-        <ctl name="LSM1 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM1 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM1 Mixer SLIMBUS_5_TX" value="1" />
     </path>
+
     <path name="listen-voice-wakeup-2">
-        <ctl name="LSM2 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM2 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM2 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-3">
-        <ctl name="LSM3 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM3 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM3 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-4">
-        <ctl name="LSM4 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM4 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM4 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-5">
-        <ctl name="LSM5 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM5 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM5 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-6">
-        <ctl name="LSM6 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM6 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM6 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-7">
-        <ctl name="LSM7 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM7 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM7 Mixer SLIMBUS_5_TX" value="1" />
     </path>
     <path name="listen-voice-wakeup-8">
-        <ctl name="LSM8 MUX" value="SLIMBUS_5_TX" />
         <ctl name="SLIMBUS_5_TX LSM Function" value="AUDIO" />
+        <ctl name="LSM8 Port" value="SLIMBUS_5_TX" />
+        <ctl name="LSM8 Mixer SLIMBUS_5_TX" value="1" />
     </path>
 
    <path name="spkr-rx-calib">
@@ -1838,15 +1821,6 @@
         <ctl name="SLIM TX0 MUX" value="DEC0" />
         <ctl name="ADC MUX0" value="AMIC" />
         <ctl name="AMIC MUX0" value="ADC2" />
-        <ctl name="IIR0 INP0 MUX" value="DEC0" />
-    </path>
-	
-	<path name="adc3">
-        <ctl name="AIF1_CAP Mixer SLIM TX3" value="1"/>
-        <ctl name="SLIM_0_TX Channels" value="One" />
-        <ctl name="SLIM TX3 MUX" value="DEC3" />
-        <ctl name="ADC MUX3" value="AMIC" />
-        <ctl name="AMIC MUX3" value="ADC3" />
         <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
@@ -2023,8 +1997,6 @@
         <ctl name="RX INT0 MIX2 INP" value="SRC0" />
     </path>
 
-<!-- #ifdef VENDOR_EDIT -->
-<!-- /*zhiguang.su@MultiMedia.AudioDrv , changed to fix our platform config,2016/7/21*/  -->
     <path name="speaker-mic">
         <path name="adc4" />
         <ctl name="ADC4 Volume" value="10" />
@@ -2033,7 +2005,6 @@
     <path name="echo-reference-audio-ec-speaker">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="TERT_MI2S_TX" />
     </path>
-<!-- endif  -->
 
     <path name="speaker-mic-liquid">
         <path name="adc4" />
@@ -2100,7 +2071,8 @@
     </path>
 
     <path name="handset-mic-sbc">
-        <path name="dmic3" />
+        <path name="adc5" />
+        <ctl name="ADC5 Volume" value="12" />
     </path>
 
     <path name="three-mic">
@@ -2125,7 +2097,7 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />
         <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
-        <ctl name="RX0 Digital Volume" value="81" />
+        <ctl name="RX0 Digital Volume" value="95" />
         <ctl name="ANC Slot" value="6" />
         <ctl name="ADC MUX10" value="AMIC" />
         <ctl name="AMIC MUX10" value="ADC5" />
@@ -2152,12 +2124,12 @@
     </path>
 
     <path name="headphones-44.1">
+        <ctl name="SLIM RX3 MUX" value="AIF3_PB" />
         <ctl name="SLIM RX4 MUX" value="AIF3_PB" />
-        <ctl name="SLIM RX5 MUX" value="AIF3_PB" />
         <ctl name="SLIM_5_RX Channels" value="Two" />
         <ctl name="SLIM_5_RX SampleRate" value="KHZ_44P1" />
-        <ctl name="RX INT1_1 MIX1 INP0" value="RX4" />
-        <ctl name="RX INT2_1 MIX1 INP1" value="RX5" />
+        <ctl name="RX INT1_1 MIX1 INP0" value="RX3" />
+        <ctl name="RX INT2_1 MIX1 INP1" value="RX4" />
         <ctl name="RX INT1 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="RX INT2 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="SPL SRC0 MUX" value="SRC_IN_HPHL" />
@@ -2461,9 +2433,6 @@
     <path name="capture-fm">
     </path>
 
-    <path name="aanc-path">
-    </path>
-
     <path name="aanc-handset-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
@@ -2703,22 +2672,16 @@
         <ctl name="MAD Input" value="DMIC0" />
     </path>
 
-    <path name="unprocessed-handset-mic">
-        <path name="handset-mic" />
-    </path>
-
-    <path name="unprocessed-mic">
-        <path name="unprocessed-handset-mic" />
-    </path>
-
     <!-- Added for ADSP testfwk -->
     <path name="ADSP testfwk">
         <ctl name="SLIMBUS_DL_HL Switch" value="1" />
     </path>
 
     <path name="voice-tx">
+        <path name="voice-headset-mic" />
     </path>
 
     <path name="voice-rx">
+        <path name="voice-headphones" />
     </path>
 </mixer>

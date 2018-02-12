@@ -31,7 +31,7 @@
         android:targetSdkVersion="24"/>
 
     <application
-        android:label="LeEcoDoze"
+        android:label="@string/device_settings_app_name"
         android:persistent="true">
 
         <receiver android:name=".BootCompletedReceiver">
@@ -41,8 +41,8 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.cyanogenmod.settings.doze.DozeService"
-                 android:permission="LeEcoDozeService">
+        <service android:name=".DozeService"
+                 android:permission="OneplusDozeService">
         </service>
 
         <activity
