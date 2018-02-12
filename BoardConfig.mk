@@ -21,9 +21,6 @@
 # definition file).
 #
 
-# inherit from msm8996-common
--include device/leeco/msm8996-common/BoardConfigCommon.mk
-
 TARGET_OTA_ASSERT_DEVICE := le_x2,LeMax2_CN,LeMax2_NA,LeMax2_WW
 
 DEVICE_PATH := device/leeco/x2
@@ -147,7 +144,7 @@ QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
-DEVICE_SPECIFIC_CAMERA_PATH := $(PLATFORM_PATH)/camera
+DEVICE_SPECIFIC_CAMERA_PATH := $(DEVICE_PATH)/camera
 TARGET_SUPPORT_HAL1 := false
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_USES_QTI_CAMERA2CLIENT := true
@@ -214,7 +211,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # Filesystem
-TARGET_FS_CONFIG_GEN += $(PLATFORM_PATH)/config.fs
+TARGET_FS_CONFIG_GEN += $(DEVICE_PATH)/config.fs
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
@@ -223,8 +220,8 @@ USE_DEVICE_SPECIFIC_GPS := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -267,7 +264,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 #TARGET_USERIMAGES_USE_F2FS := true
 
 ifeq ($(RECOVERY_VARIANT),twrp)
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/recovery/twrp.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/recovery/twrp.fstab
 BOARD_HAS_NO_REAL_SDCARD := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun0/file
 TW_THEME := portrait_hdpi
@@ -282,13 +279,11 @@ TW_INCLUDE_NTFS_3G := true
 #TWRP_EVENT_LOGGING := true
 else
 USE_CLANG_PLATFORM_BUILD := true
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/recovery/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/recovery/fstab.qcom
 endif
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
-
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
